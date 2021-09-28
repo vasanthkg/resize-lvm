@@ -3,7 +3,7 @@ partition=$(df -h / | grep -i lv | tail -1 | cut -d' ' -f1)
 
 if [ ! -z "$partition" ];
 then
-  size=$(sudo pvs | tail -1 | awk {'print $NF'} | tr '[:lower:]' '[:upper:]' | sed 's/+//')
+  size=$(sudo pvs | tail -1 | awk {'print $NF'} | tr '[:lower:]' '[:upper:]' | sed 's/<//')
   #if [ $size -ne 0 ];
   #then
     sudo lvextend -L +$size $partition || error "lvextend $partition failed"
